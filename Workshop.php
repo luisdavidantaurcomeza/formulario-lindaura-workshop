@@ -1,3 +1,32 @@
+<?php
+
+if(isset($_POST['submit']))
+{
+/*     print_r($_POST['nome ']);
+    print_r($_POST['email']);
+    print_r($_POST['telefone']);
+    print_r($_POST['genero']);
+    print_r($_POST['data_nascimento']);
+    print_r($_POST['turma']);
+     */
+    include_once('config.php');
+
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $sexo = $_POST['genero'];
+    $data_nasc = $_POST['data_nascimento'];
+    $turma = $_POST['turma'];
+
+    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,telefone,sexo,data_nasc,turma) 
+    VALUES('$nome','$email','$telefone','$sexo','$data_nasc','$turma' )");
+
+
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +39,7 @@
 </head>
 <body>
     <div class="box">
-        <form action="">
+        <form action="Workshop.php" method="POST">
             <fieldset>
                 <legend><b>Participantes</b></legend>
                 <br>
@@ -43,7 +72,7 @@
                 <br><br><br>
                 <br><br><br>
                 <div class="inputBox">
-                    <input type="text" name="Turma" id="turma" class="inputUser" required>
+                    <input type="text" name="turma" id="turma" class="inputUser" required>
                     <label for="turma" class="labelInput">Turma</label>
                 </div>    
                 <br><br>            
